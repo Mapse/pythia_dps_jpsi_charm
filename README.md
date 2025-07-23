@@ -52,5 +52,61 @@ TODO
 
 ## Running events with CRAB
 
-TODO
+As the filter efficiency for the processes is low the number of events produced is low. Therefore, to produce events with enough statistics for analyzing them, CRAB3 is used. Two files are used and they are located at GS/ folder:
+
+`crab_config_GS.py`
+
+`submit_GS.py`
+
+Before editing the files, you have to produce the "cgf" files:
+
+J/ψ + D⁰: **Jpsi_Dzero_DPS_13TeV_GS_cfg.py** and **Jpsi_Dzero_DPS_13p6TeV_GS_cfg.py**
+
+J/ψ + D⁺: **Jpsi_Dplus_DPS_13TeV_GS_cfg.py** and **Jpsi_Dplus_DPS_13p6TeV_GS_cfg.py**
+
+J/ψ + Dₛ⁺: **Jpsi_Dsplus_DPS_13TeV_GS_cfg.py** and **Jpsi_Dsplus_DPS_13p6TeV_GS_cfg.py**
+
+To produce and move them to **GS/config/**, you just need to run the sh files requiring 1 event:
+
+J/ψ + D⁰: `. gen_step_jpsi_dzero.sh 13TeV 1`
+`. gen_step_jpsi_dzero.sh 13p6TeV 1`
+
+J/ψ + D⁺: `. gen_step_jpsi_dplus.sh 13TeV 1`
+`. gen_step_jpsi_dplus.sh 13p6TeV 1`
+
+J/ψ + Dₛ⁺: `. gen_step_jpsi_dsplus.sh 13TeV 1`
+`. gen_step_jpsi_dsplus.sh 13p6TeV 1`
+
+#### Running CRAB3
+
+Now, go to crab_config_GS.py. In this file, you need to modify the parameters in lines 5-7:
+
+**out_dir_base:** this is the name of your path in the tier you are producing your CRAB output (it could be UERJ, Caltech, or CERNBOX, for instance). The template considers CERNBOX.
+
+**output_dataset:** you named it whatever you want. In the case of **mabarros** (my nicelogin) it will create a directory at /eos/user/m/mabarros/.
+
+**storage_site:** The tier you are going to produce the files. The template considers CERNBOX.
+
+Now, go to submit_GS.py. In this file, you need to modify the parameters in lines 6-8:
+
+**input_file:** This is the name of the **cfg** file you created requiring 1 event. Note that the caracteres that are before **_GS** you compose the directory name. For example, if you choose **Jpsi_Dzero_DPS_13TeV_GS_cfg.py**, **Jpsi_Dzero_DPS_13TeV** will be part of the final path (see the complete path in the end of the tutorial), between the out_dir_base and the seed number(_e.g._ 250723_134055).
+
+**njobs:** The number of jobs you want to produce.
+
+**evtsjob:** The number of events of each job.
+
+Finally, to run the program you need to get the grid certificate:
+
+`voms-proxy-init --rfc --voms cms -valid 192:00`
+
+Now, lunch the script:
+
+`python submit_GS.py`
+
+Each time you run CRAB3 it will produce (in this example) a directory for each seed (_e.g._ 250723_134055). In this example, you should have something like:
+
+`/eos/user/m/mabarros/CRAB_PrivateMC_Pythia8_DPS/Jpsi_Dzero_DPS_13TeV/250723_134055/0000`
+
+
+
 
