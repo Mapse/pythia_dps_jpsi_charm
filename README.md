@@ -48,7 +48,41 @@ For each particle channel, the commands are:
 
 ## Printing the list of particles produced 
 
-TODO
+To see the list of particles you have to provide the **.root** files created in the end of the simulation. For this, you should create a **.txt** file for each particle channel that points to the **.root** created. The main work directory for this step is called PartDrawer. There you can see the directories:
+
+**jpsi_d0:** contains the **.txt** files for that points to the **.root** files -> files_path_jpsi_d0_13TeV.txt and files_path_jpsi_d0_13p6TeV.txt
+
+**jpsi_dplus:** contains the **.txt** files for that points to the **.root** files -> files_path_jpsi_dplus_13TeV.txt and files_path_jpsi_dplus_13p6TeV.txt
+
+**jpsi_dsplus:** contains the **.txt** files for that points to the **.root** files -> files_path_jpsi_dsplus_13TeV.txt and files_path_jpsi_dsplus_13p6TeV.txt
+
+**test:** contains the code for producint he particle list -> Config.py
+
+If you open **files_path_jpsi_d0_13TeV.txt** you will see that the correct syntax to point to the root file is (note that the path is accessible via afs! it means that your files are in a different place, like a T2/T3 grid, you have to use XrootD to get them!):
+
+`file:/eos/user/m/mabarros/CRAB_PrivateMC_Pythia8_DPS/Jpsi_Dzero_DPS_13TeV/250723_134055/0000/Jpsi_Dzero_DPS_13TeV_100.root`
+
+To run the particle list, you do:
+
+### J/ψ + D⁰
+
+`cmsRun test/Config.py nevents=1 channel=Jpsi_D0 energy=13TeV`
+`cmsRun test/Config.py nevents=1 channel=Jpsi_D0 energy=13p6TeV`
+
+### J/ψ + D⁺
+
+`cmsRun test/Config.py nevents=1 channel=Jpsi_Dplus energy=13TeV`
+`cmsRun test/Config.py nevents=1 channel=Jpsi_Dplus energy=13p6TeV`
+
+### J/ψ + Dₛ⁺
+
+`cmsRun test/Config.py nevents=1 channel=Jpsi_Dsplus energy=13TeV`
+`cmsRun test/Config.py nevents=1 channel=Jpsi_Dsplus energy=13p6TeV`
+
+In the example above you will produce the list for the first event, because nevents=1. If you want to see more events, you simply put more events. 
+As the code is processed, you should see an output similar to this one:
+
+<img width="1817" height="395" alt="image" src="https://github.com/user-attachments/assets/7856c49d-9554-4c03-b955-8f617b81ba8a" />
 
 ## Running events with CRAB
 
