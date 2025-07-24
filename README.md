@@ -141,6 +141,33 @@ Each time you run CRAB3 it will produce (in this example) a directory for each s
 
 `/eos/user/m/mabarros/CRAB_PrivateMC_Pythia8_DPS/Jpsi_Dzero_DPS_13TeV/250723_134055/0000`
 
+## Getting the cross-sections
 
+Once the CRAB jobs are finished and you have enough statistics you can obtain the cross-sections for each generated process. Go to **/genXana**
+directory. The first thing to do is to create a **.txt** file point to the files. Note that the text files must be one of the following:
 
+`path_jpsi_dzero_13TeV.txt`
+`path_jpsi_dzero_13p6TeV.txt`
+`path_jpsi_dplus_13TeV.txt`
+`path_jpsi_dplus_13p6TeV.txt`
+`path_jpsi_dsplus_13TeV.txt`
+`path_jpsi_dsplus_13p6TeV.txt`
+
+As an example, to create produce the text file, you can do:
+
+`voms-proxy-init --rfc --voms cms -valid 192:00`
+`xrdfs eosuser.cern.ch ls -u /eos/user/m/mabarros/CRAB_PrivateMC_Pythia8_DPS/Jpsi_Dzero_DPS_13TeV/250723_134055/0000 > path_jpsi_dzero_13TeV.txt`
+
+Once you have your required path, run the main script:
+
+`cmsRun genXsec_cfg.py`
+
+It will ask for the path, just choose your option and wait until it processes. In the end, you should see something like this:
+
+<img width="932" height="179" alt="image" src="https://github.com/user-attachments/assets/c9aac597-c10d-4186-ab0d-d1deec90ed7c" />
+
+The important values are:
+
+**Filter efficiency (event-level)= (42937) / (2.991e+08) = 1.436e-04 +- 6.927e-07    [TO BE USED IN MCM]** -> the filter efficiency for your events
+**After filter: final cross section = 1.747e+00 +- 8.434e-03 pb** -> the wanted cross-section (in this case, the DPS cross-section for J/ψ + D⁰)
 
