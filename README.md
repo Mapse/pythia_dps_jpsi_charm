@@ -160,7 +160,7 @@ As an example, to create produce the text file, you can do:
 
 Once you have your required path, run the main script:
 
-`cmsRun genXsec_cfg.py`
+`cmsRun genXsec.py`
 
 It will ask for the path, just choose your option and wait until it processes. In the end, you should see something like this:
 
