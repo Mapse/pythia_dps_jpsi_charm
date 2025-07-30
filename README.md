@@ -36,14 +36,17 @@ For each particle channel, the commands are:
 
 ### J/ψ + D⁰
 `. gen_step_jpsi_dzero.sh 13TeV 100000`: center-of-mass energy of 13 TeV and 100000 events
+
 `. gen_step_jpsi_dzero.sh 13p6TeV 100000`: center-of-mass energy of 13.6 TeV and 100000 events
 
 ### J/ψ + D⁺
 `. gen_step_jpsi_dplus.sh 13TeV 100000`: center-of-mass energy of 13 TeV and 100000 events
+
 `. gen_step_jpsi_dplus.sh 13p6TeV 100000`: center-of-mass energy of 13.6 TeV and 100000 events
 
 ### J/ψ + Dₛ⁺
 `. gen_step_jpsi_dsplus.sh 13TeV 100000`: center-of-mass energy of 13 TeV and 100000 events
+
 `. gen_step_jpsi_dsplus.sh 13p6TeV 100000`: center-of-mass energy of 13.6 TeV and 100000 events
 
 ## Printing the list of particles produced 
@@ -67,16 +70,19 @@ To run the particle list, you do:
 ### J/ψ + D⁰
 
 `cmsRun test/Config.py nevents=1 channel=Jpsi_D0 energy=13TeV`
+
 `cmsRun test/Config.py nevents=1 channel=Jpsi_D0 energy=13p6TeV`
 
 ### J/ψ + D⁺
 
 `cmsRun test/Config.py nevents=1 channel=Jpsi_Dplus energy=13TeV`
+
 `cmsRun test/Config.py nevents=1 channel=Jpsi_Dplus energy=13p6TeV`
 
 ### J/ψ + Dₛ⁺
 
 `cmsRun test/Config.py nevents=1 channel=Jpsi_Dsplus energy=13TeV`
+
 `cmsRun test/Config.py nevents=1 channel=Jpsi_Dsplus energy=13p6TeV`
 
 In the example above you will produce the list for the first event, because nevents=1. If you want to see more events, you simply put more events. 
@@ -102,13 +108,22 @@ J/ψ + Dₛ⁺: **Jpsi_Dsplus_DPS_13TeV_GS_cfg.py** and **Jpsi_Dsplus_DPS_13p6Te
 
 To produce and move them to **GS/config/**, you just need to run the sh files requiring 1 event:
 
-J/ψ + D⁰: `. gen_step_jpsi_dzero.sh 13TeV 1`
+J/ψ + D⁰: 
+
+`. gen_step_jpsi_dzero.sh 13TeV 1`
+
 `. gen_step_jpsi_dzero.sh 13p6TeV 1`
 
-J/ψ + D⁺: `. gen_step_jpsi_dplus.sh 13TeV 1`
+J/ψ + D⁺: 
+
+`. gen_step_jpsi_dplus.sh 13TeV 1`
+
 `. gen_step_jpsi_dplus.sh 13p6TeV 1`
 
-J/ψ + Dₛ⁺: `. gen_step_jpsi_dsplus.sh 13TeV 1`
+J/ψ + Dₛ⁺:
+
+`. gen_step_jpsi_dsplus.sh 13TeV 1`
+
 `. gen_step_jpsi_dsplus.sh 13p6TeV 1`
 
 #### Running CRAB3
@@ -144,7 +159,7 @@ Each time you run CRAB3 it will produce (in this example) a directory for each s
 ## Getting the cross-sections
 
 Once the CRAB jobs are finished and you have enough statistics you can obtain the cross-sections for each generated process. Go to **/genXana**
-directory. The first thing to do is to create a **.txt** file point to the files. Note that the text files must be one of the following:
+directory. The first thing to do is to create a **.txt** file that points to the files. Note that the text files must be one of the following:
 
 `path_jpsi_dzero_13TeV.txt`
 `path_jpsi_dzero_13p6TeV.txt`
@@ -156,6 +171,7 @@ directory. The first thing to do is to create a **.txt** file point to the files
 As an example, to create produce the text file, you can do:
 
 `voms-proxy-init --rfc --voms cms -valid 192:00`
+
 `xrdfs eosuser.cern.ch ls -u /eos/user/m/mabarros/CRAB_PrivateMC_Pythia8_DPS/Jpsi_Dzero_DPS_13TeV/250723_134055/0000 > path_jpsi_dzero_13TeV.txt`
 
 Once you have your required path, run the main script:
@@ -170,4 +186,58 @@ The important values are:
 
 **Filter efficiency (event-level)= (42937) / (2.991e+08) = 1.436e-04 +- 6.927e-07    [TO BE USED IN MCM]** -> the filter efficiency for your events
 **After filter: final cross section = 1.747e+00 +- 8.434e-03 pb** -> the wanted cross-section (in this case, the DPS cross-section for J/ψ + D⁰)
+
+## Getting an analyzer to skim the data
+
+### Center-of-mass energy: 13 TeV
+
+Go to *GenLevel13TeV/Genplots13TeV*. The first thing to do is to create a *.txt* file that contains the paths that points to the files. Again, you need grid credentials:
+
+`voms-proxy-init --rfc --voms cms -valid 192:00`
+
+Now, edit the file *get_path.sh*:
+
+The default path is
+`/eos/user/m/mabarros/CRAB_PrivateMC_Pythia8_DPS/Jpsi_Dzero_DPS_13TeV/250723_134055/0000`
+
+Change the path according to your needs. Now, choose an appropriate file name (the default is test_file.txt) and do:
+
+`source get_path.sh`
+
+With the text file created, you need to call the *genlevel_13TeV.py* script. This is a configuration file used in the CMSSW enviroment to run the *.cc* files that are in the plugins directory: GenLevelJpsiDzero13TeV.cc, GenLevelJpsiDplus13TeV.cc, GenLevelJpsiDsplus13TeV.cc (I suggest you take a look at them as they contain the analysis code itself.) Before running *genlevel_13TeV.py* script, you need to provide the arguments:
+
+**nevents:** number of events you want to produce
+
+**channel:** particle channel you want to process
+
+**path:** the text file created with get_path.sh
+
+Now, just do (please, be sure that scram b was used to compile the *.cc* files that are in the plugins directory!):
+
+`cmsenv`
+
+J/ψ + D⁰: `cmsRun test/genlevel_13TeV.py nevents=1 channel=GenLevelJpsiDzero13TeV path=test_file.txt`
+
+J/ψ + D⁺: `cmsRun test/genlevel_13TeV.py nevents=1 channel=GenLevelJpsiDplus13TeV path=test_file.txt`
+
+J/ψ + Dₛ⁺: `cmsRun test/genlevel_13TeV.py nevents=1 channel=GenLevelJpsiDsplus13TeV path=test_file.txt`
+
+These commands you create root files with the following names:
+
+**control_plots_jpsidzero.root**
+
+**control_plots_Jpsidplus.root**
+
+**control_plots_Jpsidsplus.root**
+
+These files will be used in the section _producint the plots_.
+
+### Center-of-mass energy: 13.6 TeV
+
+TBD
+
+## Producing the plots
+
+TBD
+
 
