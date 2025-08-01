@@ -222,19 +222,35 @@ J/ψ + D⁺: `cmsRun test/genlevel_13TeV.py nevents=1 channel=GenLevelJpsiDplus1
 
 J/ψ + Dₛ⁺: `cmsRun test/genlevel_13TeV.py nevents=1 channel=GenLevelJpsiDsplus13TeV path=test_file.txt`
 
-These commands you create root files with the following names:
+With these commands you create root files with the following names:
 
-**control_plots_jpsidzero.root**
+**control_plots_jpsidzero_13TeV.root**
 
-**control_plots_Jpsidplus.root**
+**control_plots_Jpsidplus_13TeV.root**
 
-**control_plots_Jpsidsplus.root**
+**control_plots_Jpsidsplus_13TeV.root**
 
-These files will be used in the section _producint the plots_.
+These files will be used in the section _producing the plots_.
 
 ### Center-of-mass energy: 13.6 TeV
 
-TBD
+The steps are the same as in the 13 TeV step. The difference is that the directory is *GenLevel13TeV/Genplots13TeV*. The final commands to run the scripts are: 
+
+J/ψ + D⁰: `cmsRun test/genlevel_13p6TeV.py nevents=1 channel=GenLevelJpsiDzero13p6TeV path=test_file.txt`
+
+J/ψ + D⁺: `cmsRun test/genlevel_13p6TeV.py nevents=1 channel=GenLevelJpsiDplus13p6TeV path=test_file.txt`
+
+J/ψ + Dₛ⁺: `cmsRun test/genlevel_13p6TeV.py nevents=1 channel=GenLevelJpsiDsplus13p6TeV path=test_file.txt`
+
+With these commands you create root files with the following names:
+
+**control_plots_jpsidzero_13p6TeV.root**
+
+**control_plots_Jpsidplus_13p6TeV.root**
+
+**control_plots_Jpsidsplus_13p6TeV.root**
+
+These files will be used in the next section
 
 ## Producing the plots
 
