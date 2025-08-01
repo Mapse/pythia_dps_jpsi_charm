@@ -129,7 +129,7 @@ GenLevelJpsiDzero13TeV::~GenLevelJpsiDzero13TeV()
 void GenLevelJpsiDzero13TeV::beginJob()
 {
     // Open a ROOT file to store the output
-    outFile_ = new TFile("control_plots_jpsidzero.root", "RECREATE");
+    outFile_ = new TFile("control_plots_jpsidzero_13TeV.root", "RECREATE");
     
     // Create a tree and set up branches for pT and eta
     tree_ = new TTree("GenTree", "Tree containing distributions");
@@ -242,15 +242,15 @@ void GenLevelJpsiDzero13TeV::analyze(const edm::Event& iEvent, const edm::EventS
 			float phi = dzero.Phi();
 
 				if ((pt >= 4.0 && pt <= 60.0) && (abs(rapidity) <= 2.1) ) {
-				//cout << "dzero found" << endl;
-				
-				// Store all D0 particles
-				gendzero_mass_.push_back(mass);
-				gendzero_pt_.push_back(pt);
-				gendzero_rap_.push_back(rapidity);
-				gendzero_phi_.push_back(phi);
-				dzeroParticles.push_back(dzero);
-				//dzeroVertices.push_back(genParticles.production_vertex());
+					//cout << "dzero found" << endl;
+					
+					// Store all D0 particles
+					gendzero_mass_.push_back(mass);
+					gendzero_pt_.push_back(pt);
+					gendzero_rap_.push_back(rapidity);
+					gendzero_phi_.push_back(phi);
+					dzeroParticles.push_back(dzero);
+					//dzeroVertices.push_back(genParticles.production_vertex());
 			    }
 						
         }

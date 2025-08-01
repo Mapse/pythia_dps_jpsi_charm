@@ -6,7 +6,6 @@ import FWCore.Utilities.FileUtils as FileUtils
 
 from FWCore.ParameterSet.VarParsing import VarParsing
 
-
 ## Parsing arguments
 
 options = VarParsing('analysis')

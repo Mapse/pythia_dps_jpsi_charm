@@ -33,7 +33,7 @@ options.register ('energy',
 options.parseArguments()
 
 # Number of events
-process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(int(options.nevents)) )
+process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(int(options.nevents)))
 
 ## Choose the right channel as well as the energy to draw the particle list.
 
