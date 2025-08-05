@@ -168,7 +168,7 @@ directory. The first thing to do is to create a **.txt** file that points to the
 `path_jpsi_dsplus_13TeV.txt`
 `path_jpsi_dsplus_13p6TeV.txt`
 
-As an example, to create produce the text file, you can do:
+As an example, to produce the text file, you can do:
 
 `voms-proxy-init --rfc --voms cms -valid 192:00`
 
