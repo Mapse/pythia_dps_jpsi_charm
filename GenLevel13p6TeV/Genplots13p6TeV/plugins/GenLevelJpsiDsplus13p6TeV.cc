@@ -279,7 +279,8 @@ void GenLevelJpsiDsplus13p6TeV::analyze(const edm::Event& iEvent, const edm::Eve
 
 				genJpsidsplus_invariant_mass_.push_back((jpsiParticles[i] + dsplusParticles[j]).M());
 				genJpsidsplus_delta_rapidity_.push_back(abs(jpsiParticles[i].Rapidity() - dsplusParticles[j].Rapidity()));
-				genJpsidsplus_delta_phi_.push_back(abs(jpsiParticles[i].Phi() - dsplusParticles[j].Phi()));
+				Double_t dphi = abs(jpsiParticles[i].Phi() - dsplusParticles[j].Phi());
+				genJpsidsplus_delta_phi_.push_back(TMath::Min(dphi, 2*TMath::Pi() - dphi ));
 				
 			}
 		}

@@ -266,7 +266,8 @@ void GenLevelJpsiDsplus13TeV::analyze(const edm::Event& iEvent, const edm::Event
 			
 			genJpsidsplus_invariant_mass_.push_back((jpsiParticles[i] + dsplusParticles[j]).M());
 			genJpsidsplus_delta_rapidity_.push_back(abs(jpsiParticles[i].Rapidity() - dsplusParticles[j].Rapidity()));
-			genJpsidsplus_delta_phi_.push_back(abs(jpsiParticles[i].Phi() - dsplusParticles[j].Phi()));
+			float dphi = abs(jpsiParticles[i].Phi() - dsplusParticles[j].Phi());
+			genJpsidsplus_delta_phi_.push_back(TMath::Min(dphi, 2*TMath::Pi() - dphi ));
 
 
 			//std::cout << "Associated object found, mass:" << genJpsidsplus_invariant_mass_ << std::endl;
