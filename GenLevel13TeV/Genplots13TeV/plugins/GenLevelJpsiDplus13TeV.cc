@@ -129,7 +129,7 @@ GenLevelJpsiDplus13TeV::~GenLevelJpsiDplus13TeV()
 void GenLevelJpsiDplus13TeV::beginJob()
 {
     // Open a ROOT file to store the output
-    outFile_ = new TFile("control_plots_Jpsidplus_13TeV.root", "RECREATE");
+    outFile_ = new TFile("control_plots_jpsidplus_13TeV.root", "RECREATE");
     
     // Create a tree and set up branches for pT and eta
     tree_ = new TTree("GenTree", "Tree containing distributions");
