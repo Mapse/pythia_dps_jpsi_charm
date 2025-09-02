@@ -254,6 +254,41 @@ These files will be used in the next section
 
 ## Producing the plots
 
-TBD
+To produce the control plots go to: analysis_plot/analysis_plots.ipynb. To generate the plots, you need the input files generated in the last step. If you don't have them you can find here: https://cernbox.cern.ch/s/E1BdoOZfehmCMx0. Below the methods are explained.
 
+**1. Method: plot_distribution(channel, parameter, energy)**
 
+Running this method you will get the individual plots for each channel, for each parameter (invariant mass, delta rapidity, delta phi) for each energy. The syntax for jpsidzero are:
+
+```
+plot_distribution(channel='jpsidzero', parameter='invariant_mass', energy='13')
+plot_distribution(channel='jpsidzero', parameter='invariant_mass', energy='13p6')
+
+plot_distribution(channel='jpsidzero', parameter='delta_rapidity', energy='13')
+plot_distribution(channel='jpsidzero', parameter='delta_rapidity', energy='13p6')
+
+plot_distribution(channel='jpsidzero', parameter='delta_phi', energy='13')
+plot_distribution(channel='jpsidzero', parameter='delta_phi', energy='13p6')
+
+```
+
+**2. Method: plot_comparison_same_particle(channel, parameter)**
+
+With this second method, you will produce at the same canvas a comparison for the same particle channel for same parameter (invariant mass, delta rapidity, delta phi) for different center-of-mass energy. The syntax for jpsidzero are:
+
+```
+plot_comparison_same_particle(channel='jpsidzero', parameter='invariant_mass')
+plot_comparison_same_particle(channel='jpsidzero', parameter='delta_rapidity')
+plot_comparison_same_particle(channel='jpsidzero', parameter='delta_phi')
+```
+**3. Method: all_same_part(channel)**
+
+This method is used to join the figures produced in the last method. Therefore, you will get, for each particle channel, three plots in the same canvas for each parameter.
+
+**4. plot_comparison_different_particle(parameter', energy)**
+
+This method will create, in the same canvas, comparison for the three particle channels for each parameter and each energy.
+
+**5. all_different_part(energy)**
+
+Finnaly, this method is used to join the figures created in the last step.
