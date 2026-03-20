@@ -41,18 +41,33 @@ channel = options.channel
 
 # Jpsi + D0
 if channel == 'Jpsi_D0':
+  # 7 TeV
+  if options.energy == '7TeV':
+    path = 'jpsi_d0/files_path_jpsi_d0_7TeV.txt'
+    print('-------------- Particle List for Jpsi + D0 fragment at 7 TeV --------------')
   # 13 TeV
-  if options.energy == '13TeV':
+  elif options.energy == '13TeV':
     path = 'jpsi_d0/files_path_jpsi_d0_13TeV.txt'
     print('-------------- Particle List for Jpsi + D0 fragment at 13 TeV --------------')
   # 13.6 TeV
-  elif options.energy == '13TeV':
+  elif options.energy == '13p6TeV':
     path = 'jpsi_d0/files_path_jpsi_d0_13p6TeV.txt'
     print('-------------- Particle List for Jpsi + D0 fragment at 13.6 TeV --------------')
+  # 30 TeV
+  elif options.energy == '30TeV':
+    path = 'jpsi_d0/files_path_jpsi_d0_30TeV.txt'
+    print('-------------- Particle List for Jpsi + D0 fragment at 30 TeV --------------')
+  # 60 TeV
+  elif options.energy == '60TeV':
+    path = 'jpsi_d0/files_path_jpsi_d0_60TeV.txt'
+    print('-------------- Particle List for Jpsi + D0 fragment at 60 TeV --------------')
+  # 100 TeV
+  elif options.energy == '100TeV':
+    path = 'jpsi_d0/files_path_jpsi_d0_100TeV.txt'
+    print('-------------- Particle List for Jpsi + D0 fragment at 100 TeV --------------')
   else:
     path = ''
     print("Please, choose the available energies: 13TeV and 13p6TeV")
-
 # Jpsi + D+
 elif channel == 'Jpsi_Dplus':
   # 13 TeV
