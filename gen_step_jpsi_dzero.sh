@@ -30,8 +30,20 @@ root_gs=Jpsi_Dzero_DPS_${energy}.root
 
 ## CmsDriver for GS step
 
+# Run 1 (7 TeV): using 2017 as base (Using globaltag and beam spot from Run2 -> it does't matter as we do only GEN)
+if [[ "$energy" == "7TeV" ]]; then
+  
+  cmsDriver.py $path_gs --fileout file:$root_gs --mc --eventcontent RAWSIM --datatier GEN --conditions 106X_mc2017_realistic_v8 --beamspot Realistic25ns13TeVEarly2017Collision --step GEN --customise Configuration/DataProcessing/Utils.addMonitoring --geometry DB:Extended --era Run2_2017 --python_filename $py_gs -n $nevt --no_exec
+  cmsRun -e -j $REPORT_NAME $py_gs
+  
+  # If the number of events is 1: it means you want to run with CRAB3
+  if [[ "$nevt" -eq 1 ]]; then
+    cp $py_gs GS/config/
+  fi
+
+
 # Run 2 (13 TeV): using 2017 as base
-if [[ "$energy" == "13TeV" ]]; then
+elif [[ "$energy" == "13TeV" ]]; then
   
   cmsDriver.py $path_gs --fileout file:$root_gs --mc --eventcontent RAWSIM --datatier GEN --conditions 106X_mc2017_realistic_v8 --beamspot Realistic25ns13TeVEarly2017Collision --step GEN --customise Configuration/DataProcessing/Utils.addMonitoring --geometry DB:Extended --era Run2_2017 --python_filename $py_gs -n $nevt --no_exec
   cmsRun -e -j $REPORT_NAME $py_gs
@@ -43,6 +55,41 @@ if [[ "$energy" == "13TeV" ]]; then
 
 # Run 3 (13.6 TeV): uning 2022 as base
 elif [[ "$energy" == "13p6TeV" ]]; then
+  
+  cmsDriver.py $path_gs --fileout file:$root_gs --mc --eventcontent RAWSIM --datatier GEN --conditions 124X_mcRun3_2022_realistic_v12 --beamspot Realistic25ns13p6TeVEarly2022Collision --step GEN --customise Configuration/DataProcessing/Utils.addMonitoring --geometry DB:Extended --era Run3 --python_filename $py_gs -n $nevt --no_exec
+  cmsRun -e -j $REPORT_NAME $py_gs
+  
+  # If the number of events is 1: it means you want to run with CRAB3
+  if [[ "$nevt" -eq 1 ]]; then
+    cp $py_gs GS/config/
+  fi
+
+################# Energies abcve LHC!
+
+# (30 TeV): uning 2022 as base
+elif [[ "$energy" == "30TeV" ]]; then
+  
+  cmsDriver.py $path_gs --fileout file:$root_gs --mc --eventcontent RAWSIM --datatier GEN --conditions 124X_mcRun3_2022_realistic_v12 --beamspot Realistic25ns13p6TeVEarly2022Collision --step GEN --customise Configuration/DataProcessing/Utils.addMonitoring --geometry DB:Extended --era Run3 --python_filename $py_gs -n $nevt --no_exec
+  cmsRun -e -j $REPORT_NAME $py_gs
+  
+  # If the number of events is 1: it means you want to run with CRAB3
+  if [[ "$nevt" -eq 1 ]]; then
+    cp $py_gs GS/config/
+  fi
+
+# (60 TeV): uning 2022 as base
+elif [[ "$energy" == "60TeV" ]]; then
+  
+  cmsDriver.py $path_gs --fileout file:$root_gs --mc --eventcontent RAWSIM --datatier GEN --conditions 124X_mcRun3_2022_realistic_v12 --beamspot Realistic25ns13p6TeVEarly2022Collision --step GEN --customise Configuration/DataProcessing/Utils.addMonitoring --geometry DB:Extended --era Run3 --python_filename $py_gs -n $nevt --no_exec
+  cmsRun -e -j $REPORT_NAME $py_gs
+  
+  # If the number of events is 1: it means you want to run with CRAB3
+  if [[ "$nevt" -eq 1 ]]; then
+    cp $py_gs GS/config/
+  fi
+
+# (100 TeV): uning 2022 as base
+elif [[ "$energy" == "100TeV" ]]; then
   
   cmsDriver.py $path_gs --fileout file:$root_gs --mc --eventcontent RAWSIM --datatier GEN --conditions 124X_mcRun3_2022_realistic_v12 --beamspot Realistic25ns13p6TeVEarly2022Collision --step GEN --customise Configuration/DataProcessing/Utils.addMonitoring --geometry DB:Extended --era Run3 --python_filename $py_gs -n $nevt --no_exec
   cmsRun -e -j $REPORT_NAME $py_gs
