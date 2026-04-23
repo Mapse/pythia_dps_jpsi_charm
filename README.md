@@ -4,13 +4,17 @@
 
 In lxplus, run the following commands:
 
-` 
+```
 cmsrel CMSSW_13_0_13
+
 cd CMSSW_13_0_13/src/
+
 git clone git@github.com:Mapse/pythia_dps_jpsi_charm.git .
+
 cmsenv
+
 scram b
-`
+```
 After that, your setup should be ready.
 
 ## Running the Monte Carlo
