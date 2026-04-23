@@ -2,20 +2,18 @@
 
 ## Preparing the setup
 
-In lxplus, run the following commands:
+First you must prepare your environment:
 
 ```
 cmsrel CMSSW_13_0_13
-
-cd CMSSW_13_0_13/src/
+cd CMSSW_13_0_13/src
 
 git clone git@github.com:Mapse/pythia_dps_jpsi_charm.git .
 
 cmsenv
-
 scram b
 ```
-After that, your setup should be ready.
+Make sure all files are in the src/ directory. For example, if for some reason your files are in src/pythia_dps_jpsi_charm/, you will not be able to run the Monte Carlo algorithm correctly. After that, your setup should be ready.
 
 ## Running the Monte Carlo
 
@@ -33,18 +31,6 @@ Their names and characterists are:
 ### J/ψ + Dₛ⁺
 - **`Jpsi_Dsplus_DPS_13TeV_cfi.py`**: DPS predictions for J/ψ + Dₛ⁺ at 13 TeV. 
 - **`Jpsi_Dsplus_DPS_13p6TeV_cfi.py`**: DPS predictions for J/ψ + Dₛ⁺ at 13.6 TeV.
-
-First you must prepare your environment:
-
-```
-cmsrel CMSSW_13_0_13
-cd CMSSW_13_0_13/src
-
-git clone git@github.com:Mapse/pythia_dps_jpsi_charm.git .
-
-cmsenv
-scram b
-```
 
 To run the fragments to produce the events you have to use the **sh** (bash script) files. Below, the
 syntax is:
