@@ -1,5 +1,20 @@
 # Pythia double parton scattering predictions: J/ψ+D⁰, J/ψ+D⁺, and J/ψ+Ds⁺ - 13 and 13.6 TeV
 
+## Preparing the setup
+
+In lxplus, run the following commands:
+
+` 
+cmsrel CMSSW_13_0_13
+cd CMSSW_13_0_13/src/
+git clone git@github.com:Mapse/pythia_dps_jpsi_charm.git .
+cmsenv
+scram b
+`
+After that, your setup should be ready.
+
+## Running the Monte Carlo
+
 For running the Double Parton Scattering (DPS) simulations, Pythia 8 is used for particle hadronization and EvtGen for particle decays. The fragment files are located at **Configuration/GenProduction/python/**. Is it worth mentioning that all fragments includes J/ψ + prompt and non-prompt charmed meson productions, _i.e._ it includes J/ψ+ $c\bar{c}$ and J/ψ+ $b\bar{b}$ modes.
 Their names and characterists are:
 
