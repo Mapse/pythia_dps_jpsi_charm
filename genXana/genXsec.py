@@ -5,14 +5,18 @@ import FWCore.Utilities.FileUtils as FileUtils
 # Function to pick up the path for running the script
 def pick_path():
     path_options = {1: 'path_jpsi_dzero_7TeV_LHCb.txt',
-                    2: 'path_jpsi_dzero_13TeV.txt',
-                    3: 'path_jpsi_dzero_13p6TeV.txt',
-                    4: 'path_jpsi_dzero_60TeV.txt',
-                    5: 'path_jpsi_dplus_13TeV.txt',
-                    6: 'path_jpsi_dplus_13p6TeV.txt',
-                    7: 'path_jpsi_dsplus_13TeV.txt',
-                    8: 'path_jpsi_dsplus_13p6TeV.txt',
-                    9: 'path_jpsi_dsplus_60TeV.txt'}
+                    2: 'path_jpsi_dzero_7TeV.txt',     # ICHEP 2026
+                    3: 'path_jpsi_dzero_13TeV.txt',    # ICHEP 2026
+                    4: 'path_jpsi_dzero_30TeV.txt',    # ICHEP 2026
+                    5: 'path_jpsi_dzero_13p6TeV.txt',
+                    6: 'path_jpsi_dzero_60TeV.txt',    # ICHEP 2026
+                    7: 'path_jpsi_dzero_100TeV.txt',   # ICHEP 2026
+
+                    8: 'path_jpsi_dplus_13TeV.txt',
+                    9: 'path_jpsi_dplus_13p6TeV.txt',
+                    10: 'path_jpsi_dsplus_13TeV.txt',
+                    11: 'path_jpsi_dsplus_13p6TeV.txt',
+                    12: 'path_jpsi_dsplus_60TeV.txt'}
 
     print("Paths available:")
     for number, pt in path_options.items():
