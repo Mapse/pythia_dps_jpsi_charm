@@ -47,8 +47,8 @@ End
             'PartonLevel:MPI = on',
             'SecondHard:Charmonium = on',
             'SecondHard:generate = on',
-            'PhaseSpace:pTHatMin = 2.0',
-            'PhaseSpace:pTHatMinSecond = 2.0',
+            'PhaseSpace:pTHatMin = 15.0',
+            'PhaseSpace:pTHatMinSecond = 4.0',
             'PhaseSpace:pTHatMinDiverge = 0.5',
             ),
         parameterSets = cms.vstring('pythia8CommonSettings',
@@ -65,20 +65,20 @@ generator.PythiaParameters.processParameters.extend(EvtGenExtraParticles)
 # Filter only pp events which produce JPsi
 jpsifilter = cms.EDFilter("PythiaFilter", 
     ParticleID = cms.untracked.int32(443),
-    MinPt           = cms.untracked.double(0.0),
-    MaxPt           = cms.untracked.double(12.0),
-    MinEta          = cms.untracked.double(2.0),
-    MaxEta          = cms.untracked.double(4.0)
+    MinPt           = cms.untracked.double(25.0),
+    MaxPt           = cms.untracked.double(100.0),
+    MinEta          = cms.untracked.double(-1.2),
+    MaxEta          = cms.untracked.double(1.2)
 )
 
 # Dimuon filter
 mumufilter = cms.EDFilter("MCParticlePairFilter",
     Status = cms.untracked.vint32(1, 1),
     MinP = cms.untracked.vdouble(2.7, 2.7),
-    MinPt = cms.untracked.vdouble(0.65, 0.65),
-    MaxPt = cms.untracked.vdouble(1000, 1000),
-    MaxEta = cms.untracked.vdouble(5.0, 5.0),
-    MinEta = cms.untracked.vdouble(2.0, 2.0),
+    MinPt = cms.untracked.vdouble(2.0, 2.0),
+    MaxPt = cms.untracked.vdouble(100, 100),
+    MaxEta = cms.untracked.vdouble(2.4, 2.4),
+    MinEta = cms.untracked.vdouble(-2.4, -2.4),
     ParticleCharge = cms.untracked.int32(-1),
     ParticleID1 = cms.untracked.vint32(13),
     ParticleID2 = cms.untracked.vint32(13)
@@ -86,10 +86,10 @@ mumufilter = cms.EDFilter("MCParticlePairFilter",
 
 dzerofilter = cms.EDFilter("PythiaFilter", 
     ParticleID = cms.untracked.int32(421),
-    MinPt           = cms.untracked.double(3.0),
-    MaxPt           = cms.untracked.double(12.0),
-    MinEta          = cms.untracked.double(2.0),
-    MaxEta          = cms.untracked.double(4.0)
+    MinPt           = cms.untracked.double(4.0),
+    MaxPt           = cms.untracked.double(60.0),
+    MinEta          = cms.untracked.double(-2.1),
+    MaxEta          = cms.untracked.double(2.1)
 )
 
 
