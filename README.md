@@ -194,9 +194,11 @@ The important values are:
 
 ## Getting an analyzer to skim the data
 
-### Center-of-mass energy: 13 TeV
+In this section, the strategy for producing the root files for the analysis is presented. You should carefully read the section regarding 7 TeV, as it contains all the details.
 
-Go to *GenLevel13TeV/Genplots13TeV*. The first thing to do is to create a *.txt* file that contains the paths that points to the files. Again, you need grid credentials:
+### Center-of-mass energy: 7 TeV
+
+Go to *GenLevel7TeV/Genplots7TeV*. The first thing to do is to create a *.txt* file that contains the paths that points to the files. Again, you need grid credentials:
 
 `voms-proxy-init --rfc --voms cms -valid 192:00`
 
@@ -209,9 +211,9 @@ Change the path according to your needs. Now, choose an appropriate file name (t
 
 `source get_path.sh`
 
-With the text file created, you need to call the *genlevel_13TeV.py* script. This is a configuration file used in the CMSSW enviroment to run the *.cc* files that are in the plugins directory: GenLevelJpsiDzero13TeV.cc, GenLevelJpsiDplus13TeV.cc, GenLevelJpsiDsplus13TeV.cc (I suggest you take a look at them as they contain the analysis code itself.) Before running *genlevel_13TeV.py* script, you need to provide the arguments:
+With the text file created, you need to call the *genlevel_7TeV.py* script. This is a configuration file used in the CMSSW enviroment to run the *.cc* files that are in the plugins directory: GenLevelJpsiDzero7TeV.cc, GenLevelJpsiDplus7TeV.cc, GenLevelJpsiDsplus7TeV.cc (It is suggested that you take a look at them, as they contain the analysis code itself.) Before running *genlevel_7TeV.py* script, you need to provide the arguments:
 
-**nevents:** number of events you want to produce
+**nevents:** number of events you want to produce (if you do nevents=-1 it will run all events)
 
 **channel:** particle channel you want to process
 
@@ -220,6 +222,26 @@ With the text file created, you need to call the *genlevel_13TeV.py* script. Thi
 Now, just do (please, be sure that scram b was used to compile the *.cc* files that are in the plugins directory!):
 
 `cmsenv`
+
+J/ψ + D⁰: `cmsRun test/genlevel_7TeV.py nevents=1 channel=GenLevelJpsiDzero7TeV path=test_file.txt`
+
+J/ψ + D⁺: `cmsRun test/genlevel_7TeV.py nevents=1 channel=GenLevelJpsiDplus7TeV path=test_file.txt`
+
+J/ψ + Dₛ⁺: `cmsRun test/genlevel_7TeV.py nevents=1 channel=GenLevelJpsiDsplus7TeV path=test_file.txt`
+
+With these commands you will create the root files with the following names:
+
+**control_plots_jpsidzero_7TeV.root**
+
+**control_plots_Jpsidplus_7TeV.root**
+
+**control_plots_Jpsidsplus_7TeV.root**
+
+These files will be used in the section _producing the plots_.
+
+### Center-of-mass energy: 13 TeV
+
+The steps are the same as in the 7 TeV step. The difference is that the directory is *GenLevel13TeV/Genplots13TeV*. The final commands to run the scripts are: 
 
 J/ψ + D⁰: `cmsRun test/genlevel_13TeV.py nevents=1 channel=GenLevelJpsiDzero13TeV path=test_file.txt`
 
@@ -235,11 +257,9 @@ With these commands you create root files with the following names:
 
 **control_plots_Jpsidsplus_13TeV.root**
 
-These files will be used in the section _producing the plots_.
-
 ### Center-of-mass energy: 13.6 TeV
 
-The steps are the same as in the 13 TeV step. The difference is that the directory is *GenLevel13TeV/Genplots13TeV*. The final commands to run the scripts are: 
+Again, the steps are the same as in the 7 TeV step. The difference is that the directory is *GenLevel13p6TeV/Genplots13p6TeV*. The final commands to run the scripts are: 
 
 J/ψ + D⁰: `cmsRun test/genlevel_13p6TeV.py nevents=1 channel=GenLevelJpsiDzero13p6TeV path=test_file.txt`
 
@@ -255,7 +275,15 @@ With these commands you create root files with the following names:
 
 **control_plots_Jpsidsplus_13p6TeV.root**
 
-These files will be used in the next section
+### Center-of-mass energy: 30, 60, 100 TeV
+
+To avoid a long README file, the steps for these energies are (only J/ψ + D⁰) :
+
+`cmsRun test/genlevel_30TeV.py nevents=1 channel=GenLevelJpsiDzero30TeV path=test_file.txt`
+
+`cmsRun test/genlevel_60TeV.py nevents=1 channel=GenLevelJpsiDzero60TeV path=test_file.txt`
+
+`cmsRun test/genlevel_100TeV.py nevents=1 channel=GenLevelJpsiDzero100TeV path=test_file.txt`
 
 ## Producing the plots
 
