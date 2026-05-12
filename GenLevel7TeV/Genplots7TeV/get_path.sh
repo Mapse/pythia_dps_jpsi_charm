@@ -1,0 +1,1 @@
+xrdfs eosuser.cern.ch ls -u /eos/user/m/mabarros/CRAB_PrivateMC_Pythia8_DPS/Jpsi_Dzero_DPS_13TeV/250723_134055/0000 > test_file.txt
