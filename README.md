@@ -287,21 +287,33 @@ To avoid a long README file, the steps for these energies are (only J/ψ + D⁰)
 
 ## Producing the plots
 
-To produce the control plots go to: analysis_plot/analysis_plots.ipynb. To generate the plots, you need the input files generated in the last step. If you don't have them you can find here: https://cernbox.cern.ch/s/E1BdoOZfehmCMx0. Below the methods are explained.
+To produce the control plots go to: analysis_plot/analysis_plots.ipynb. To generate the plots, you need the input files generated in the last step. Below the methods are explained.
 
 **1. Method: plot_distribution(channel, parameter, energy)**
 
 Running this method you will get the individual plots for each channel, for each parameter (invariant mass, delta rapidity, delta phi) for each energy. The syntax for jpsidzero are:
 
 ```
+plot_distribution(channel='jpsidzero', parameter='invariant_mass', energy='7')
 plot_distribution(channel='jpsidzero', parameter='invariant_mass', energy='13')
 plot_distribution(channel='jpsidzero', parameter='invariant_mass', energy='13p6')
+plot_distribution(channel='jpsidzero', parameter='invariant_mass', energy='30')
+plot_distribution(channel='jpsidzero', parameter='invariant_mass', energy='60')
+plot_distribution(channel='jpsidzero', parameter='invariant_mass', energy='100')
 
+plot_distribution(channel='jpsidzero', parameter='delta_rapidity', energy='7')
 plot_distribution(channel='jpsidzero', parameter='delta_rapidity', energy='13')
 plot_distribution(channel='jpsidzero', parameter='delta_rapidity', energy='13p6')
+plot_distribution(channel='jpsidzero', parameter='delta_rapidity', energy='30')
+plot_distribution(channel='jpsidzero', parameter='delta_rapidity', energy='60')
+plot_distribution(channel='jpsidzero', parameter='delta_rapidity', energy='100')
 
+plot_distribution(channel='jpsidzero', parameter='delta_phi', energy='7')
 plot_distribution(channel='jpsidzero', parameter='delta_phi', energy='13')
 plot_distribution(channel='jpsidzero', parameter='delta_phi', energy='13p6')
+plot_distribution(channel='jpsidzero', parameter='delta_phi', energy='30')
+plot_distribution(channel='jpsidzero', parameter='delta_phi', energy='60')
+plot_distribution(channel='jpsidzero', parameter='delta_phi', energy='100')
 
 ```
 
